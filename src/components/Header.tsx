@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { signIn } from 'next-auth/react';
 import { Session } from 'next-auth';
+import Image from 'next/image';
 
 export default function Header({ session }: { session: Session }) {
   return (
@@ -11,12 +12,16 @@ export default function Header({ session }: { session: Session }) {
       <Link href="/" className="font-bold text-red-700 text-3xl tracking-tight">
         Shopper<span className="text-blue-700">M</span>art
       </Link>
-      <nav className="flex gap-4 *:rounded *:px-2 *:py-1 ">
-        <button className="border border-blue-600 text-blue-600 inline-flex gap-1 items-center">
+      <nav className="flex gap-4 *:rounded *:px-2 ">
+        <Link
+          href="/newAdForm"
+          className="border border-blue-600 text-blue-600 inline-flex gap-1 items-center"
+        >
           <FontAwesomeIcon icon={faPlus} className="h-3" />
           <span>Post a Ad</span>
-        </button>
-        {session?.user && (
+        </Link>
+        <span className="border-r"></span>
+        {!session?.user && (
           <>
             <button className="border-r border-l text-gray-600">Sign-Up</button>
             <button
@@ -25,6 +30,19 @@ export default function Header({ session }: { session: Session }) {
             >
               Login
             </button>
+          </>
+        )}
+        {session?.user && (
+          <>
+            <Link href={'/account'}>
+              <Image
+                src={session.user.image as string}
+                alt={'avatar'}
+                width={80}
+                height={52}
+                className="rounded-md "
+              />
+            </Link>
           </>
         )}
       </nav>

@@ -1,5 +1,6 @@
 'use client';
 
+import Uploader from '@/components/Uploader';
 import {
   faImage,
   faLocationCrosshairs,
@@ -40,6 +41,7 @@ export default function NewAdPage() {
     }
   }
 
+
   return (
     <div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
@@ -54,17 +56,18 @@ export default function NewAdPage() {
                 icon={faImage}
                 className="h-24 text-gray-300 mb-2 mt-2"
               />
+              <Uploader onSuccess="" />
               <button className="border-blue-400 text-blue-600 px-4 py-2 rounded mt-1 inline-flex gap-1 items-center justify-center">
                 <FontAwesomeIcon icon={faPlus} />
                 Add Photo
               </button>
             </div>
           </div>
-          <div className='mt-5'>
+          <div className="mt-5">
             <label htmlFor="" className="">
               Location
             </label>
-            <button className='flex items-center gap-1 py-1 justify-center border w-full border-gray-500 text-gray-600 rounded'>
+            <button className="flex items-center gap-1 py-1 justify-center border w-full border-gray-500 text-gray-600 rounded">
               <FontAwesomeIcon icon={faLocationCrosshairs} />
               <span>Share Location</span>
             </button>

@@ -17,6 +17,9 @@ dependencies:
   '@fortawesome/react-fontawesome':
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
+  imagekitio-react:
+    specifier: ^4.0.0
+    version: 4.0.0(react-dom@18.2.0)(react@18.2.0)
   next:
     specifier: 14.2.0
     version: 14.2.0(react-dom@18.2.0)(react@18.2.0)
@@ -1588,6 +1591,22 @@ packages:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
     dev: true
+
+  /imagekit-javascript@3.0.0:
+    resolution: {integrity: sha512-39Q54v1fwRlCYnVyalfRi9UFuUq4t+vnktWUzqjBHRguOB+wLNnAEuPbNbm0NUBJAUw5He4C1k/0vbNLOvU/4g==}
+    dev: false
+
+  /imagekitio-react@4.0.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-O7dsPnAb92JCtHsl8RqOAYq8uhJR98VgC+ddHXNStaS6Frj6u4pQ4ftdtISfh8AMnZj/celnsdv0qOuj81RHhw==}
+    peerDependencies:
+      react: ^16.13.1 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      imagekit-javascript: 3.0.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}

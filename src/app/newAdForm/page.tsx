@@ -1,5 +1,11 @@
 'use client';
 
+import {
+  faImage,
+  faLocationCrosshairs,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, FormEvent } from 'react';
 
 export default function NewAdPage() {
@@ -37,9 +43,37 @@ export default function NewAdPage() {
   return (
     <div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
-      <form onSubmit={submitForm} className="max-w-sm mx-auto">
-        <div>product photo</div>
-        <div>
+      <form onSubmit={submitForm} className="max-w-xl mx-auto flex gap-12">
+        <div className="grow pt-8">
+          <div className="bg-gray-200 p-4 rounded">
+            <h2 className="text-center text-gray-500 font-bold uppercase text-xs">
+              Picture of Product
+            </h2>
+            <div className="flex flex-col">
+              <FontAwesomeIcon
+                icon={faImage}
+                className="h-24 text-gray-300 mb-2 mt-2"
+              />
+              <button className="border-blue-400 text-blue-600 px-4 py-2 rounded mt-1 inline-flex gap-1 items-center justify-center">
+                <FontAwesomeIcon icon={faPlus} />
+                Add Photo
+              </button>
+            </div>
+          </div>
+          <div className='mt-5'>
+            <label htmlFor="" className="">
+              Location
+            </label>
+            <button className='flex items-center gap-1 py-1 justify-center border w-full border-gray-500 text-gray-600 rounded'>
+              <FontAwesomeIcon icon={faLocationCrosshairs} />
+              <span>Share Location</span>
+            </button>
+            <div className="bg-gray-100 p-4 min-h-12 rounded text-gray-400 text-center mt-2">
+              Google Map
+            </div>
+          </div>
+        </div>
+        <div className="grow pt-3">
           <label htmlFor="titleIn">Title</label>
           <input id="titleIn" type="text" placeholder="Title" />
 
@@ -69,8 +103,12 @@ export default function NewAdPage() {
             id="contactIn"
             placeholder="phone #:438 979 9666"
           ></textarea>
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Loading...' : 'Submit'}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="bg-blue-600 text-white px-6 py-2 rounded mt-1"
+          >
+            {isLoading ? 'Loading...' : 'Publish'}
           </button>
         </div>
       </form>

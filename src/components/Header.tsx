@@ -14,7 +14,7 @@ export default function Header({ session }: { session: Session }) {
       </Link>
       <nav className="flex gap-4 *:rounded *:px-2 ">
         <Link
-          href="/NewAdPage"
+          href="/newAdForm"
           className="border border-blue-600 text-blue-600 inline-flex gap-1 items-center"
         >
           <FontAwesomeIcon icon={faPlus} className="h-3" />

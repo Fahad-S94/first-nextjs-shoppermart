@@ -24,7 +24,6 @@ export default function UploadArea({ files, setFiles }: Props) {
         />
 
         <label
-          onClick={() => console.log}
           className={
             'upload-btn px-4 py-2 rounded mt-1 inline-flex gap-1 items-center justify-center border' +
             (isUploading
@@ -40,7 +39,7 @@ export default function UploadArea({ files, setFiles }: Props) {
             }}
           />
           {isUploading ? (
-            <span>Uploading</span>
+            <span>Uploading...</span>
           ) : (
             <>
               <FontAwesomeIcon icon={faPlus} />

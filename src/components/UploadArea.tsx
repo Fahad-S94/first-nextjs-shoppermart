@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UploadResponse } from 'imagekit/dist/libs/interfaces';
 import { Dispatch, SetStateAction, useState } from 'react';
 import Uploader from './Uploader';
+import UploadThumbnail from './UploadThumbnail';
 
 type Props = {
   files: UploadResponse[];
@@ -35,7 +36,7 @@ export default function UploadArea({ files, setFiles }: Props) {
             onUploadStart={() => setIsUploading(true)}
             onSuccess={(file) => {
               setFiles((prev) => [...prev, file]);
-              setIsUploading(false)
+              setIsUploading(false);
             }}
           />
           {isUploading ? (
@@ -47,9 +48,11 @@ export default function UploadArea({ files, setFiles }: Props) {
             </>
           )}
         </label>
-        {files.map((file) => (
-          <div className="text-xs">{file.url}</div>
-        ))}
+        <div className='flex gap-2 mt-2 flex-wrap'>
+          {files.map((file) => (
+            <div className='size-16 rounded overflow-hidden'><UploadThumbnail file={file} /></div>
+          ))}
+        </div>
       </div>
     </div>
   );

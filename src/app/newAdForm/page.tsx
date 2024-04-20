@@ -1,18 +1,24 @@
 'use client';
 
-import Uploader from '@/components/Uploader';
 import {
   faImage,
   faLocationCrosshairs,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useEffect } from 'react';
 import { UploadResponse } from 'imagekit/dist/libs/interfaces';
 import UploadArea from '@/components/UploadArea';
+import FormInputs from '@/components/FormInputs';
+
+import MapPicker from 'react-google-map-picker';
 
 export default function NewAdPage() {
   const [files, setFiles] = useState<UploadResponse[]>([]);
+  const [showMap, setShowMap] = useState(false);
+  useEffect(() => {
+    setShowMap(true);
+  }, []);
 
   return (
     <div>
@@ -29,40 +35,17 @@ export default function NewAdPage() {
               <span>Share Location</span>
             </button>
             <div className="bg-gray-100 p-4 min-h-12 rounded text-gray-400 text-center mt-2">
-              Google Map
+              {showMap && (
+                <MapPicker
+                  apiKey={'AIzaSyAcSFw1FFDxlIbuF4ogdx9M6ZScbiIHGXs'}
+                  defaultLocation={{ lat: 10, lng: 106 }}
+                />
+              )}
             </div>
           </div>
         </div>
         <div className="grow pt-3">
-          <label htmlFor="titleIn">Title</label>
-          <input id="titleIn" type="text" placeholder="Title" />
-
-          <label htmlFor="priceIn">Price</label>
-          <input id="priceIn" type="number" placeholder="Price" />
-
-          <label htmlFor="categoryIn">Category</label>
-          <select name="" id="categoryIn">
-            <option selected disabled value="">
-              Select Category
-            </option>
-            <option value="">Cars</option>
-            <option value="">Electronic</option>
-            <option value="">Properties</option>
-          </select>
-
-          <label htmlFor="descriptionIn">Description</label>
-          <textarea
-            name=""
-            id="descriptionIn"
-            placeholder="description"
-          ></textarea>
-
-          <label htmlFor="contactIn">Contact Info</label>
-          <textarea
-            name=""
-            id="contactIn"
-            placeholder="phone #:438 979 9666"
-          ></textarea>
+          <FormInputs />
           <button
             type="submit"
             className="bg-blue-600 text-white px-6 py-2 rounded mt-1"

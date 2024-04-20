@@ -6,11 +6,25 @@ import React, { useState, useEffect } from 'react';
 import { UploadResponse } from 'imagekit/dist/libs/interfaces';
 import UploadArea from '@/components/UploadArea';
 import FormInputs from '@/components/FormInputs';
-import LocationPicker from '@/components/LocationPicker';
+import LocationPicker, { Location } from '@/components/LocationPicker';
+
+const defaultLocation = {
+  lat: 45.5019, 
+  lng: 73.5674
+
+}
 
 export default function NewAdPage() {
   const [files, setFiles] = useState<UploadResponse[]>([]);
 
+  const [location, setLocation] = useState<Location>(defaultLocation);
+
+  function handleFindMyPositionClick() {
+    navigator.geolocation.getCurrentPosition(ev => {
+      setLocation({lat: ev.coords.latitude, lng: ev.coords.longitude})
+    }, console.error);
+
+  }
 
   return (
     <div>
@@ -19,15 +33,19 @@ export default function NewAdPage() {
           <UploadArea files={files} setFiles={setFiles} />
 
           <div className="mt-5">
-            <label htmlFor="" className="">
-              Location
-            </label>
-            <button className="flex items-center gap-1 py-1 justify-center border w-full border-gray-500 text-gray-600 rounded">
-              <FontAwesomeIcon icon={faLocationCrosshairs} />
-              <span>Share Location</span>
-            </button>
-            <div className="bg-gray-100 p-4 min-h-12 rounded text-gray-400 text-center mt-2">
-              <LocationPicker />
+            <div className="flex justify-between items-center mb-1">
+              <label htmlFor="" className="mt-0 mb-0">
+                Location
+              </label>
+              <div>
+                <button type='button' onClick={handleFindMyPositionClick} className="flex items-center p-1 justify-center text-gray-600 rounded">
+                  <FontAwesomeIcon icon={faLocationCrosshairs} />
+                </button>
+              </div>
+            </div>
+            <div className="bg-gray-100 overflow-hidden min-h-12 rounded text-gray-400 text-center mt-2">
+              {/* {JSON.stringify(location)} */}
+              <LocationPicker location={location} setLocation={setLocation} />
             </div>
           </div>
         </div>

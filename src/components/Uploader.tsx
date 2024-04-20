@@ -1,5 +1,5 @@
 'use client';
-import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import { IKContext, IKUpload } from 'imagekitio-react';
 import { IKUploadProps } from 'imagekitio-react/dist/types/components/IKUpload/props';
 
 export default function Uploader(props: IKUploadProps) {

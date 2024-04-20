@@ -8,8 +8,8 @@ export default function FormInputs() {
       <input id="priceIn" type="number" placeholder="Price" />
 
       <label htmlFor="categoryIn">Category</label>
-      <select name="" id="categoryIn">
-        <option selected disabled value="">
+      <select name="" id="categoryIn" defaultValue="0">
+        <option disabled value="0">
           Select Category
         </option>
         <option value="">Cars</option>

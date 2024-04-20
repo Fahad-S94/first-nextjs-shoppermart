@@ -1,24 +1,16 @@
 'use client';
 
-import {
-  faImage,
-  faLocationCrosshairs,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UploadResponse } from 'imagekit/dist/libs/interfaces';
 import UploadArea from '@/components/UploadArea';
 import FormInputs from '@/components/FormInputs';
-
-import MapPicker from 'react-google-map-picker';
+import LocationPicker from '@/components/LocationPicker';
 
 export default function NewAdPage() {
   const [files, setFiles] = useState<UploadResponse[]>([]);
-  const [showMap, setShowMap] = useState(false);
-  useEffect(() => {
-    setShowMap(true);
-  }, []);
+
 
   return (
     <div>
@@ -35,12 +27,7 @@ export default function NewAdPage() {
               <span>Share Location</span>
             </button>
             <div className="bg-gray-100 p-4 min-h-12 rounded text-gray-400 text-center mt-2">
-              {showMap && (
-                <MapPicker
-                  apiKey={'AIzaSyAcSFw1FFDxlIbuF4ogdx9M6ZScbiIHGXs'}
-                  defaultLocation={{ lat: 10, lng: 106 }}
-                />
-              )}
+              <LocationPicker />
             </div>
           </div>
         </div>

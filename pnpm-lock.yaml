@@ -17,6 +17,9 @@ dependencies:
   '@fortawesome/react-fontawesome':
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.2)(react@18.2.0)
+  '@googlemaps/js-api-loader':
+    specifier: ^1.16.6
+    version: 1.16.6
   imagekit:
     specifier: ^5.0.0
     version: 5.0.1
@@ -35,9 +38,6 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
-  react-google-map-picker:
-    specifier: ^1.2.3
-    version: 1.2.3(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -170,6 +170,12 @@ packages:
       '@fortawesome/fontawesome-svg-core': 6.5.2
       prop-types: 15.8.1
       react: 18.2.0
+    dev: false
+
+  /@googlemaps/js-api-loader@1.16.6:
+    resolution: {integrity: sha512-V8p5W9DbPQx74jWUmyYJOerhiB4C+MHekaO0ZRmc6lrOYrvY7+syLhzOWpp55kqSPeNb+qbC2h8i69aLIX6krQ==}
+    dependencies:
+      fast-deep-equal: 3.1.3
     dev: false
 
   /@humanwhocodes/config-array@0.12.3:
@@ -1374,7 +1380,6 @@ packages:
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
-    dev: true
 
   /fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
@@ -2492,15 +2497,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-google-map-picker@1.2.3(react@18.2.0):
-    resolution: {integrity: sha512-XeIj0Eh0vhNToMTebQQrt5O9fdPRDf4KtG8J22xupH7Pu49J1dP5UuhfCM6VmK2nIv5ECyQUpOT6+gZgGaQhJA==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^17.0.0
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-is@16.13.1:

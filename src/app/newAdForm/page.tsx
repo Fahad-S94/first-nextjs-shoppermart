@@ -8,22 +8,23 @@ import UploadArea from '@/components/UploadArea';
 import FormInputs from '@/components/FormInputs';
 import LocationPicker, { Location } from '@/components/LocationPicker';
 
-const defaultLocation = {
-  lat: 45.5019, 
-  lng: 73.5674
-
-}
+const locationDefault = {
+  lat: 45.514752,
+  lng: -73.6886784,
+};
 
 export default function NewAdPage() {
   const [files, setFiles] = useState<UploadResponse[]>([]);
 
-  const [location, setLocation] = useState<Location>(defaultLocation);
+  const [location, setLocation] = useState<Location>(locationDefault);
+  const [gpsCoords, setGpsCoords] = useState<Location | null>(null);
 
   function handleFindMyPositionClick() {
-    navigator.geolocation.getCurrentPosition(ev => {
-      setLocation({lat: ev.coords.latitude, lng: ev.coords.longitude})
+    navigator.geolocation.getCurrentPosition((ev) => {
+      const location = { lat: ev.coords.latitude, lng: ev.coords.longitude };
+      setLocation(location);
+      setGpsCoords(location);
     }, console.error);
-
   }
 
   return (
@@ -38,14 +39,22 @@ export default function NewAdPage() {
                 Location
               </label>
               <div>
-                <button type='button' onClick={handleFindMyPositionClick} className="flex items-center p-1 justify-center text-gray-600 rounded">
+                <button
+                  type="button"
+                  onClick={handleFindMyPositionClick}
+                  className="flex items-center p-1 justify-center text-gray-600 rounded"
+                >
                   <FontAwesomeIcon icon={faLocationCrosshairs} />
                 </button>
               </div>
             </div>
             <div className="bg-gray-100 overflow-hidden min-h-12 rounded text-gray-400 text-center mt-2">
-              {/* {JSON.stringify(location)} */}
-              <LocationPicker location={location} setLocation={setLocation} />
+              {/* <span className="text-xs">{JSON.stringify(location)}</span> */}
+              <LocationPicker
+                defaultLocation={locationDefault}
+                gpsCoords={gpsCoords}
+                onChange={(location) => setLocation(location)}
+              />
             </div>
           </div>
         </div>
